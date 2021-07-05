@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools, mathrsfs, amsmath, amsthm,amssymb}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\setcounter{section}{-1}
+
+\newenvironment{exercise}
+{\noindent \subsubsection{}}
+{}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{lemma}{Lemma}
+
+\title{Introductory Discrete Mathematics Solution Manual}
+\author{Thomas Hughes}
+\date{May 2020}
+
+\usepackage[pdfencoding=auto, psdextra]{hyperref}
+\renewcommand\thesubsection{\thesection}
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+\input{Chapter0.tex}
+
+\newpage
+\input{Chapter1.tex}
+
+\end{document}
