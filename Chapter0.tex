@@ -437,11 +437,33 @@
 \end{exercise}
 
 \begin{exercise} \label{0.67}
-	pending
+	Show that congruence modulo m is an equivalence relation
+	\begin{proof}
+	    To show the relation is reflexive we observe \( a - a = 0m \) iff \( a \equiv a \hspace{1mm} (mod \hspace{1mm} m) \)
+	    
+	    To show that the relation is symmetric we let \( a \equiv b \hspace{1mm} (mod \hspace{1mm} m) \). So \( a - b = qm \). So \( b - a = -qm \). So \( b \equiv a \hspace{1mm} (mod \hspace{1mm} m) \).
+	    
+	    To show transitivity, let \( a \equiv b \hspace{1mm} (mod \hspace{1mm} m) \) and \( b \equiv c \hspace{1mm} (mod \hspace{1mm} m) \). So \( a - b = qm \) and \( b - c = km \). So
+	    \[ a - c = a - b + b -c = (a - b) + (b - c) = qm + km = (q+k)m \]
+	    Therefore \( a \equiv c \hspace{1mm} (mod \hspace{1mm} m) \).
+	\end{proof}
 \end{exercise}
 
 \begin{exercise} \label{0.68}
-	pending
+	Find the congruence classes modulo 5:
+	\begin{enumerate}
+	    \item \( [0]_5 \)
+	    \item \( [1]_5 \)
+	    \item \( [2]_5 \)
+	\end{enumerate}
+	
+	\begin{proof}
+	    \begin{enumerate}
+	        \item \( [0]_5 = \{ x : x = 5q + 0, q \in \mathbb{Z} \} \)
+	        \item \( [1]_5 = \{ x : x = 5q + 1, q \in \mathbb{Z} \} \)
+	        \item \( [2]_5 = \{ x : x = 5q + 2, q \in \mathbb{Z} \} \)
+	    \end{enumerate}
+	\end{proof}
 \end{exercise}
 
 \begin{exercise} \label{0.69}
@@ -505,11 +527,73 @@
 \end{exercise}
 
 \begin{exercise} \label{0.84}
-	pending
+	Prove that
+	\begin{enumerate}
+	    \item every finite partially ordered set has a maximal element and a minimal element
+	    
+	    \item every finite linearly ordered set has a greatest element and a least element
+	\end{enumerate}
+	
+	\begin{proof}
+	    \begin{enumerate}
+	        \item Let \( P \) be a poset such that \( \vert P \vert = n \). Suppose, to the contrary, that \( R \) admits no maximal element. Let \( (r_1,r_2) \in R \) where \( r_1 \neq r_2 \), which is permitted since \( r_1 \) is not maximal. Define \( r_{k+1} \) by \( (r_k,r_{k+1}) \in R \) where \( r_k \neq r_{k+1} \), which again is permitted since \( r_k \) is not maximal. But then \( r_1, r_2, \ldots, r_{n+1} \in P \) where \( r_1 \neq r_2 \neq \ldots \neq r_{n+1} \) by transitivity and antisymmetry, contradicting with \( \vert P \vert = n \). Thus \( R \) must admit a maximal element.
+	        
+	        A similar argument shows that \( R \) must admit a minimal element.
+	        
+	        \item Let \( P \) be a finite linearly ordered set. Since every linearly ordered set is also a poset, it follows from \( 1. \) that \( R \) admits a maximal element, \( u \). By linear ordering, \( \forall_{p \in P} (p,u) \in R\) or \( (u,p) \in R \). By maximality of \( u \), it is not the case that \( (u,p) \in R \) when \( u \neq p \). Thus \( \forall_{p \in P} (p,u) \in R \). So \( u \) is a maximum.
+	        
+	        A similar argument shows that \( R \) must admit a minimum element.
+	    \end{enumerate}
+	\end{proof}
 \end{exercise}
 
 \begin{exercise} \label{0.85}
-	pending
+	Prove by induction that 
+	\[ 1^k + 2^k + \ldots + n^k \]
+	\begin{enumerate}
+	    \item is \( \frac{n(n+1)(2n+1)}{6} \) when \( k = 2 \)
+	    \item is \( \left( \frac{n(n+1)}{2} \right)^2 \) when \( k = 3 \)
+	\end{enumerate}
+	
+	\begin{proof}
+	    \begin{enumerate}
+	        \item When \( n = 1 \) we have
+	        \[ 1^2 = \frac{6}{6} = \frac{1(1+1)(2(1)+1)}{6} \]
+	        so that the claim holds for \( n = 1 \).
+	        
+	        Now suppose the claim holds for \( n \). Then
+	        \begin{align*}
+	            1^2 + 2^2 + \ldots + n^2 + (n+1)^2 &= \frac{n(n+1)(2n+1)}{6} + (n+1)^2 \\
+	            &= (n+1) \left(\frac{n(2n+1)}{6} + (n+1)\right) \\
+	            &=  (n+1) \left(\frac{n(2n+1)+6(n+1)}{6}\right) \\
+	            &= (n+1) \left( \frac{2n^2+n+6n+6}{6} \right) \\
+	            &= (n+1) \left( \frac{2n^2+7n+6}{6} \right) \\
+	            &= (n+1) \left( \frac{(n+2)(2n+3)}{6} \right) \\
+	            &= \frac{(n+1)(n+2)(2n+3)}{6} \\
+	            &= \frac{(n+1)((n+1)+1)(2(n+1)+1)}{6}
+	        \end{align*}
+	        
+	        Therefore, by the principle of mathematical induction, the claim holds for all \( n \in \mathbb{N} \).
+	        
+	        \item When \( n = 1 \) we have
+	        \[ 1^3 = \left(\frac{2}{2}\right)^2 = \left( \frac{1(1+1)}{2} \right)^2 \]
+	        so that the claim holds for \( n = 1 \).
+	        
+	        Now suppose the claim holds for \( n \). Then
+	        \begin{align*}
+	            1^3 + 2^3 + \ldots + n^3 + (n+1)^3 &= \left( \frac{n(n+1)}{2} \right)^2 + (n+1)^3 \\
+	            &= \frac{n^2(n+1)^2}{4} + (n+1)^3 \\
+	            &= (n+1)^2 \left( \frac{n^2}{4} + (n+1) \right) \\
+	            &= (n+1)^2 \left( \frac{n^2+4n+4}{4} \right) \\
+	            &= (n+1)^2 \left( \frac{(n+2)^2}{2^2} \right) \\
+	            &= \frac{(n+1)^2(n+2)^2}{2^2} \\
+	            &= \left( \frac{(n+1)(n+2)}{2} \right)^2 \\
+	            &= \left( \frac{(n+1)((n+1)+1)}{2} \right)^2 \\
+	        \end{align*}
+	        
+	        Therefore, by the principle of mathematical induction, the claim holds for all \( n \in \mathbb{N} \).
+	    \end{enumerate}
+	\end{proof}
 \end{exercise}
 
 \begin{exercise} \label{0.86}
@@ -561,7 +645,38 @@
 \end{exercise}
 
 \begin{exercise} \label{0.94}
-	pending
+	Prove \( 2^n > n^2 \) for \( n > 4 \).
+	\begin{lemma}
+	    \( 2n^2 > (n+1)^2 \) for \( n > 4 \)
+	\end{lemma}
+	\begin{proof}[proof of lemma]
+	    For \( n = 5 \) we have
+	    \[ 2(5^2) = 50 > 36 = (5+1)^2 \]
+	    so the claim holds for \( n = 5 \). Now, suppose the claim holds for \( n \), then
+	    \begin{align*}
+	        2(n+1)^2 &= 2(n^2+2n+1) \\
+	        &= 2n^2 + 4n + 2 \\
+	        &> (n+1)^2 + 4n + 2 \\
+	        &= n^2 + 2n + 1 + 4n + 2 \\
+	        &= n^2 + 6n + 3 \\
+	        &> n^2 + 4n + 4 \\
+	        &= (n+2)^2 \\
+	        &= ((n+1)+1)^2
+	    \end{align*}
+	    where the second inequality follows from the fact that \( 2n > 1 \) for \( n > 5 \). Therefore, by the principle of mathematical induction, the claim holds for \( n > 4 \).
+	\end{proof}
+	
+	\begin{proof}
+	    For \( n = 5 \) we have
+	    \[ 2^5 = 32 > 25 = 5^2 \]
+	    so that the claim holds for \( n = 5 \). Now, suppose the claim holds for \( n \), then
+	    \begin{align*}
+	        2^{n+1} &= 2(2^n) \\
+	        &> 2(n^2) \\
+	        &> (n+1)^2
+	    \end{align*}
+	    where the second inequality follows from our lemma. Therefore, by the principle of mathematical induction, the claim holds for \( n > 4 \).
+	\end{proof}
 \end{exercise}
 
 \begin{exercise} \label{0.95}
@@ -569,11 +684,42 @@
 \end{exercise}
 
 \begin{exercise} \label{0.96}
-	pending
+	Prove that \( 7^n - 1 \) is divisible by 6. 
+	
+	\begin{proof}
+	    For \( n = 1 \) we have
+	    \[ 7^1 -1 = 6 = 6(1) \]
+	    so that the claim holds for \( n = 1 \). Now, suppose the claim holds for \( n \). Then
+	    \begin{align*}
+	        7^{n+1} - 1 &= 7(7^n) - 1 \\
+	        &= 7 \left(7^n - \frac{1}{7}\right) \\
+	        &= 7 \left(7^n -1 + 1 - \frac{1}{7}\right) \\
+	        &> 7 \left(6q + \frac{6}{7}\right) \\
+	        &= 6(7q) + 6 \\
+	        &= 6(7q + 1)
+	    \end{align*}
+	    Therefore, by the principle of mathematical induction, the claim holds for \( n \in \mathbb{N} \)
+	\end{proof}
 \end{exercise}
 
 \begin{exercise} \label{0.97}
-	pending
+	Prove that \( 11^n - 6 \) is divisible by 5.
+	
+	\begin{proof}
+	    For \( n = 1 \) we have
+	    \[ 11^1 - 6 = 5 = 5(1) \]
+	    so the claim holds for \( n = 1 \). Now, suppose the claim holds for \( n \). Then
+	    \begin{align*}
+	        11^{n+1} - 6 &= 11(11^n) - 6 \\
+	        &= 11 \left( 11^n - \frac{6}{11} \right) \\
+	        &= 11 \left( 11^n - 6 + 6 - \frac{6}{11} \right) \\
+	        &= 11 \left( 5q + 6 - \frac{6}{11} \right) \\
+	        &= 11 \left( 5q + \frac{60}{11} \right) \\
+	        &= 11(5q) + 60 \\
+	        &= 5 (11q + 12)
+	    \end{align*}
+	    so that the claim holds for \( n+1 \). Therefore, by the principle of mathematical induction, the claim holds for \( n \in \mathbb{N} \).
+	\end{proof}
 \end{exercise}
 
 \begin{exercise} \label{0.98}
@@ -581,11 +727,45 @@
 \end{exercise}
 
 \begin{exercise} \label{0.99}
-	pending
+	Prove \( 3^n + 7^n -2 \) is divisble by 8.
+	\begin{proof}
+	    For \( n = 1 \) we have
+	    \[ 3^1 + 7^1 - 2 = 8 = 8(1) \]
+	    so that the claim holds for \( n = 1 \). Now suppose the claim holds for \( n \). Then
+	    \begin{align*}
+	        3^{n+1} + 7^{n+1} - 2 &= 3(3^n) + 7(7^n) - 2 \\
+	        &= 3(3^n + 7^n - 2 - 7^n + 2) + 7(7^n) - 2 \\
+	        &= 3(8q - 7^n + 2) + 7(7^n) - 2 \\
+	        &= 3(8q) - 3(7^n) + 6 + 7(7^n) - 2 \\
+	        &= 3(8q) + 4(7^n) + 4 \\
+	        &= 3(8q) + 4(7^n+1) \\
+	        \intertext{Note that \( 7^n \) is always odd, implying}
+	        &= 3(8q) + 4(2k) \\
+	        &= 3(8q) + 8k \\
+	        &= 8(3q+k)
+	    \end{align*}
+	    Therefore, by the principle of mathematical induction, the claim holds for \( n \in \mathbb{N} \).
+	\end{proof}
 \end{exercise}
 
 \begin{exercise} \label{0.100}
-	pending
+	Prove DeMorgan's Laws:
+	\begin{enumerate}
+	    \item \( \left( A \cap B \right)^c = A^c \cup B^c\)
+	    \item \( \left( A \cup B \right)^c = A^c \cap B^c\)
+	\end{enumerate}
+	
+	\begin{proof}
+	    \begin{enumerate}
+	        \item This was already proven in the chapter.
+	        \item
+	        \begin{align*}
+	            x \in (A \cup B)^c &\text{  iff  } x \not\in A \cup B \\
+	            &\text{  iff  } x \not\in A \text{ and } x \not\in B \\
+	            &\text{  iff  } x \in A^c \cap B^c
+	        \end{align*}
+	    \end{enumerate}
+	\end{proof}
 \end{exercise}
 
 \begin{exercise} \label{0.101}
